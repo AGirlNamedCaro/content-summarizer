@@ -1,39 +1,78 @@
 # ContentSummarizer
 
-TODO: Delete this and the text below, and describe your gem
+A Ruby gem that intelligently scrapes and summarizes web content using AI, with built-in caching and rate limiting.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/content_summarizer`. To experiment with that code, run `bin/console` for an interactive prompt.
+## Features (Current & Planned)
+
+- ✅ AI-powered text summarization using Claude API
+- ✅ Robust error handling with custom exceptions
+- ✅ Comprehensive test coverage with RSpec
+- 🚧 Web scraping with content extraction
+- 🚧 Redis caching for performance optimization
+- 🚧 Rate limiting to respect API quotas
+- 🚧 Fallback to multiple AI providers
 
 ## Installation
-
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
-
-Install the gem and add to the application's Gemfile by executing:
-
-```bash
-bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
-```
-
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-```bash
-gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
-```
-
 ## Usage
+### Basic Summarization
+```ruby
+require 'content_summarizer'
 
-TODO: Write usage instructions here
+# Initialize with your API key
+client = ContentSummarizer::ClaudeClient.new(api_key: ENV['CLAUDE_API_KEY'])
+summarizer = ContentSummarizer::Summarizer.new(api_client: client)
+
+# Summarize any text
+summary = summarizer.summarize("Your long text here...")
+puts summary
+```
+
+### Configuration
+
+Set your API key as an environment variable:
+```bash
+export CLAUDE_API_KEY='your-api-key-here'
+```
+
+Get your Claude API key from [Anthropic's Console](https://console.anthropic.com/)
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+### Setup
+```bash
+git clone https://github.com/YOUR_USERNAME/content_summarizer.git
+cd content_summarizer
+bundle install
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+### Running Tests
+```bash
+bundle exec rspec
+```
+
+### Architecture
+
+This gem follows SOLID principles with clear separation of concerns:
+
+- **Summarizer**: Coordinates summarization with dependency injection
+- **ClaudeClient**: Handles Claude API communication
+- **WebScraper** (Coming): Extracts content from URLs
+- **Cache** (Coming): Redis-based caching layer
+- **Service** (Coming): Orchestrates the full pipeline
+
+## Error Handling
+
+The gem provides specific exceptions for different failure scenarios:
+
+- `AuthenticationError`: Invalid API key
+- `RateLimitError`: API rate limit exceeded
+- `ServerError`: Claude API server issues
+- `APIError`: Other API-related errors
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/content_summarizer.
+Bug reports and pull requests are welcome on GitHub.
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+MIT License - see LICENSE file for details
