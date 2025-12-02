@@ -7,7 +7,7 @@ A Ruby gem that intelligently scrapes and summarizes web content using AI, with 
 - ✅ AI-powered text summarization using Claude API
 - ✅ Robust error handling with custom exceptions
 - ✅ Comprehensive test coverage with RSpec
-- 🚧 Web scraping with content extraction
+- ✅ Web scraping with content extraction
 - 🚧 Redis caching for performance optimization
 - 🚧 Rate limiting to respect API quotas
 - 🚧 Fallback to multiple AI providers

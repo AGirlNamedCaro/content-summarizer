@@ -3,6 +3,8 @@
 require_relative "content_summarizer/version"
 require_relative "content_summarizer/summarizer"
 require_relative "content_summarizer/claude_client"
+require_relative "content_summarizer/scraped_content"
+require_relative "content_summarizer/web_scraper"
 
 module ContentSummarizer
   class Error < StandardError; end
@@ -10,4 +12,6 @@ module ContentSummarizer
   class RateLimitError < Error; end
   class ServerError < Error; end
   class APIError < Error; end
+  class InvalidURLError < Error; end
+  class EmptyContentError < Error; end
 end
