@@ -31,12 +31,14 @@ module ContentSummarizer
       when 200
         response.parsed_response["content"][0]["text"]
       when 401
-        raise AuthenticationError
+        raise AuthenticationError, "Invalid API key"
+      when 429
+        raise RateLimitError, "Too many requests"
+      when 500..599
+        raise ServerError, "Claude API server error (#{response.code})"
       else
-        raise StandardError
+        raise APIError, "Unexpected response: #{response.code}"
       end
-    rescue Net::ReadTimeout
-      raise TimeoutError, "Request timed out - Claude API is slow to respond"
     end
   end
 end

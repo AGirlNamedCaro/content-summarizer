@@ -5,6 +5,7 @@ require_relative "content_summarizer/summarizer"
 require_relative "content_summarizer/claude_client"
 require_relative "content_summarizer/scraped_content"
 require_relative "content_summarizer/web_scraper"
+require_relative "content_summarizer/content_summarization_service"
 
 module ContentSummarizer
   class Error < StandardError; end
