@@ -4,6 +4,7 @@ PATH
     content_summarizer (0.1.0)
       httparty (~> 0.21)
       nokogiri (~> 1.15)
+      redis (~> 5.0)
 
 GEM
   remote: https://rubygems.org/
@@ -12,6 +13,7 @@ GEM
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
     bigdecimal (3.3.1)
+    connection_pool (3.0.2)
     crack (1.0.1)
       bigdecimal
       rexml
@@ -56,6 +58,10 @@ GEM
       erb
       psych (>= 4.0.0)
       tsort
+    redis (5.4.1)
+      redis-client (>= 0.22.0)
+    redis-client (0.26.2)
+      connection_pool
     regexp_parser (2.11.3)
     reline (0.6.3)
       io-console (~> 0.5)

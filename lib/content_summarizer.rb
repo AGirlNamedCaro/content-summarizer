@@ -8,6 +8,7 @@ require_relative "content_summarizer/web_scraper"
 require_relative "content_summarizer/content_summarization_service"
 require_relative "content_summarizer/fallback_api_client"
 require_relative "content_summarizer/openai_client"
+require_relative "content_summarizer/cache"
 
 module ContentSummarizer
   class Error < StandardError; end

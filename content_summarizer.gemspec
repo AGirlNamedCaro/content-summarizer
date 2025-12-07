@@ -26,6 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rubocop", "~> 1.21"
   spec.add_development_dependency "webmock", "~> 3.18"
   spec.add_development_dependency "json", "~> 2.6"
+  spec.add_dependency "redis", "~> 5.0"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
