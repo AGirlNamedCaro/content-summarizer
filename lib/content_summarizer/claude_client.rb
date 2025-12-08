@@ -1,4 +1,5 @@
 require "httparty"
+require "json"
 
 module ContentSummarizer
   class ClaudeClient
