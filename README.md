@@ -375,3 +375,22 @@ Your credit balance is too low to access the Anthropic API
 ```
 
 **Solution:** Add credits at [Anthropic Console](https://console.anthropic.com/settings/billing) or use `--demo` mode.
+
+## ⚡ Performance & Cost Optimization
+
+### Caching Benefits
+Without caching, every identical URL request:
+- Scrapes the website again (network latency)
+- Calls the AI API again (costs money)
+- Takes several seconds
+
+With Redis caching (24-hour TTL):
+- **Subsequent requests:** Near-instant (Redis lookup)
+- **Cost savings:** Eliminates duplicate API calls
+- **Speed improvement:** Orders of magnitude faster
+
+**Why 24-hour TTL?** Articles rarely change within a day, balancing freshness with efficiency.
+
+### Design Choices for Efficiency
+- **Fallback strategy:** Reduces failed requests when primary API is unavailable
+- **Global cache:** All users benefit from any cached summary
